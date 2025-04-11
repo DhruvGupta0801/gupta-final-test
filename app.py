@@ -17,7 +17,7 @@ except socket.gaierror as e:
 @app.route('/')
 def hello_cloud():
     logger.info("Accessed / route")
-    return 'Welcome to Gupta Final Test Server'
+    return 'Welcome to Dhruv Gupta Final Test API Server'
 
 @app.route('/host')
 def host_name():
