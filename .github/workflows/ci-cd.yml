@@ -37,9 +37,12 @@ jobs:
         aws ecs update-service --cluster gupta-cluster --service gupta-service --force-new-deployment --region us-east-1
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
     - name: Wait for ECS service to stabilize
       run: |
         aws ecs wait services-stable --cluster gupta-cluster --services gupta-service --region us-east-1
         echo "Service stabilized"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
